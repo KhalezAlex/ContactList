@@ -43,7 +43,7 @@ function selectIdListener() {
         data: {contactId: getIdSelected()},
         success(data) {
             // console.log(JSON.parse(data));
-            flushInputs();
+            flushData();
             setContactProps(JSON.parse(data));
         }
     })

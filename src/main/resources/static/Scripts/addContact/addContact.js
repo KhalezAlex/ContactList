@@ -18,7 +18,7 @@ function chooseRequest() {
 
 function drawTask(task) {
     flashChoice(task);
-    flushInputs();
+    flushData();
     drawInputsOutputs(task);
     attrSubButton(task);
 }
@@ -52,12 +52,13 @@ function flashChoice(task) {
     $('#' + task + "Choice").html("<b>" + task + "</b>");
 }
 
-function flushInputs() {
+function flushData() {
     $('#name').val("");
     $('#phone').val("");
     $('#email').val("");
     $('#blogLink').val("");
     $('#comment').val("");
+    flushTable();
 }
 
 function attrSubButton(task) {

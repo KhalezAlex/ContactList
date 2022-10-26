@@ -47,3 +47,18 @@
     font-weight: bolder;
     color: #42060d;
 }
+
+.request_Table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-bottom-color: #42060d;
+    border-width: 1px;
+}
+
+.request_Table_cell {
+    border-style: solid;
+    border-color: #42060d;
+    padding: 4px;
+    border-width: 1px;
+    align-items: center;
+}

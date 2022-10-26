@@ -12,7 +12,7 @@ function addContact() {
             comment: $('#comment').val()
         }
     });
-    flushInputs();
+    flushData();
 }
 
 function updateContact() {
@@ -30,7 +30,7 @@ function updateContact() {
             comment: $('#comment').val()
         },
         success: function () {
-            flushInputs();
+            flushData();
             chooseUpdate()}
     })
 }
@@ -43,23 +43,22 @@ function deleteContact() {
         dataType: "html",
         data: {id: $('#selectId').val()},
         success: function () {
-            flushInputs();
+            flushData();
             chooseDelete();}
     })
 }
 
 function request() {
     console.log("request");
+    flushTable();
     $.ajax({
         url: "/nameRequest",
         type: "GET",
         dataType: "html",
         data: {name: $('#name').val()},
         success(data) {
-            let t = JSON.parse(data);
-            for (let i = 0; i < t.length; i++)
-                console.log(t[i].phone);
-            drawTable();
+            let tableData = JSON.parse(data);
+            drawTable(tableData);
         }
     })
 }
