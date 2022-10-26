@@ -24,10 +24,12 @@ public class AddFirstContactController {
         contact.setId(getNextId());
         contactList.add(contact);
     }
+
     @GetMapping("/addContact")
     public String addContact(@RequestParam String name, @RequestParam String phone,
                              @RequestParam String email, @RequestParam String blogLink,
                              @RequestParam String comment, Model model) {
+        generateContactList();
         model.addAttribute("name", name);
         model.addAttribute("phone", phone);
         model.addAttribute("email", email);
@@ -38,6 +40,15 @@ public class AddFirstContactController {
         model.addAttribute("listSize", contactList.size());
         Contact.print(contactList);
         return "addContact";
+    }
+
+    public void generateContactList() {
+        addContact(new Contact("Alex", "+71112223344", "alex@gmail.com", "a.com", ""));
+        addContact(new Contact("Alex", "+72223334455", "a2@gmail.com", "a2.com", "friend"));
+        addContact(new Contact("Bob", "+73334445566", "b@gmail.com", "b.com", "school"));
+        addContact(new Contact("Nick", "+74445556677", "n@gmail.com", "n.com", ""));
+        addContact(new Contact("Nick", "+75556667788", "n2@gmail.com", "n2.com", "university"));
+        addContact(new Contact("Paula", "+76667778899", "p@gmail.com", "p.com", "cutie"));
     }
 
     public static int[] getIds() {
@@ -80,5 +91,13 @@ public class AddFirstContactController {
         if (!idValid(id)) return false;
         contactList.remove(getContactIdByEntityId(id));
         return true;
+    }
+
+    public static LinkedList<Contact> getSelectByName(String name) {
+        LinkedList<Contact> list = new LinkedList<>();
+        for (Contact c: contactList)
+            if (c.getName().equalsIgnoreCase(name))
+                list.add(c);
+        return list;
     }
 }

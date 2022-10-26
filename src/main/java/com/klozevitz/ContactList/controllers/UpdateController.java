@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UpdateContactController {
+public class UpdateController {
     @GetMapping("/update")
     public String updateContact(@RequestParam int id, @RequestParam String name,
                                 @RequestParam String phone, @RequestParam String email,

@@ -47,3 +47,20 @@ function deleteContact() {
             chooseDelete();}
     })
 }
+
+function request() {
+    console.log("request");
+    $.ajax({
+        url: "/nameRequest",
+        type: "GET",
+        dataType: "html",
+        data: {name: $('#name').val()},
+        success(data) {
+            let t = JSON.parse(data);
+            for (let i = 0; i < t.length; i++)
+                console.log(t[i].phone);
+            drawTable();
+        }
+    })
+}
+

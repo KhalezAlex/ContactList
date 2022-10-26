@@ -1,27 +1,55 @@
 attrSubButton("add");
 function chooseAdd() {
-    $('#addChoice').html("<b>Add</b>");
-    $('#updateChoice').html("Update");
-    $('#deleteChoice').html("Delete");
+    drawTask("add");
     $('#selectId').hide();
-    flushInputs();
-    attrSubButton('add');
 }
 function chooseUpdate() {
-    $('#addChoice').html("Add");
-    $('#updateChoice').html("<b>Update</b>");
-    $('#deleteChoice').html("Delete");
-    flushInputs()
-    attrSubButton('update');
+    drawTask("update");
     selectIdShow();
 }
 function chooseDelete() {
-    $('#addChoice').html("Add");
-    $('#updateChoice').html("Update");
-    $('#deleteChoice').html("<b>Delete</b>");
-    flushInputs();
-    attrSubButton('delete');
+    drawTask("delete");
     selectIdShow();
+}
+function chooseRequest() {
+    drawTask("request");
+    $('#selectId').hide();
+}
+
+function drawTask(task) {
+    flashChoice(task);
+    flushInputs();
+    drawInputsOutputs(task);
+    attrSubButton(task);
+}
+
+function drawInputsOutputs(task) {
+    if (task === "request") requestInputs();
+    else addUpdDelInputs();
+}
+
+function addUpdDelInputs() {
+    $('#phone').show();
+    $('#email').show();
+    $('#blogLink').show();
+    $('#comment').show();
+    $('#nameRequestTable').hide();
+}
+
+function requestInputs() {
+    $('#phone').hide();
+    $('#email').hide();
+    $('#blogLink').hide();
+    $('#comment').hide();
+    $('#nameRequestTable').show();
+}
+
+function flashChoice(task) {
+    $('#addChoice').html("add");
+    $('#updateChoice').html("update");
+    $('#deleteChoice').html("delete");
+    $('#requestChoice').html("request");
+    $('#' + task + "Choice").html("<b>" + task + "</b>");
 }
 
 function flushInputs() {
@@ -34,12 +62,14 @@ function flushInputs() {
 
 function attrSubButton(task) {
     let submit = $('#submit');
-    submit.val(task + " contact");
+    if (task !== "request") submit.val(task + " contact");
+    else submit.val(task);
     submit.off('click');
     submit.on('click', function () {
         if (task === 'add') addContact();
         else if (task === 'update') updateContact();
-        else deleteContact();
+             else if (task === 'delete') deleteContact();
+                  else request();
     });
 }
 
@@ -48,3 +78,4 @@ function selectIdShow() {
     getIdsFromDB();
     setTimeout(function() {selectIdListener()}, 50);
 }
+
