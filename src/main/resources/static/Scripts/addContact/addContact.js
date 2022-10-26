@@ -1,4 +1,3 @@
-attrSubButton("add");
 function chooseAdd() {
     drawTask("add");
     $('#selectId').hide();
@@ -22,12 +21,10 @@ function drawTask(task) {
     drawInputsOutputs(task);
     attrSubButton(task);
 }
-
 function drawInputsOutputs(task) {
     if (task === "request") requestInputs();
     else addUpdDelInputs();
 }
-
 function addUpdDelInputs() {
     $('#phone').show();
     $('#email').show();
@@ -35,7 +32,6 @@ function addUpdDelInputs() {
     $('#comment').show();
     $('#nameRequestTable').hide();
 }
-
 function requestInputs() {
     $('#phone').hide();
     $('#email').hide();
@@ -43,7 +39,6 @@ function requestInputs() {
     $('#comment').hide();
     $('#nameRequestTable').show();
 }
-
 function flashChoice(task) {
     $('#addChoice').html("add");
     $('#updateChoice').html("update");
@@ -51,7 +46,6 @@ function flashChoice(task) {
     $('#requestChoice').html("request");
     $('#' + task + "Choice").html("<b>" + task + "</b>");
 }
-
 function flushData() {
     $('#name').val("");
     $('#phone').val("");
@@ -80,3 +74,4 @@ function selectIdShow() {
     setTimeout(function() {selectIdListener()}, 50);
 }
 
+attrSubButton("add");

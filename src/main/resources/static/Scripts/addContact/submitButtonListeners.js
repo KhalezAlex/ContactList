@@ -1,5 +1,4 @@
 function addContact() {
-    console.log("add chosen");
     $.ajax({
         url: "/add",
         type: "GET",
@@ -14,9 +13,7 @@ function addContact() {
     });
     flushData();
 }
-
 function updateContact() {
-    console.log("update chosen")
     $.ajax({
         url: "/update",
         type: "GET",
@@ -34,9 +31,7 @@ function updateContact() {
             chooseUpdate()}
     })
 }
-
 function deleteContact() {
-    console.log("delete chosen");
     $.ajax({
         url: "/delete",
         type: "GET",
@@ -47,9 +42,7 @@ function deleteContact() {
             chooseDelete();}
     })
 }
-
 function request() {
-    console.log("request");
     flushTable();
     $.ajax({
         url: "/nameRequest",

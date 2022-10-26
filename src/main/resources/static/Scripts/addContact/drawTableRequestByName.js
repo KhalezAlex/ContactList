@@ -4,7 +4,6 @@ function drawTable(tableData) {
     for (let i = 0; i < tableData.length; i++)
         table.append(getRow(tableData[i]));
 }
-
 function getHeader() {
     let row = document.createElement("tr");
     let header = ["name", "phone", "email", "blogLink", "comment"];
@@ -12,7 +11,6 @@ function getHeader() {
         row.append(getData(header[i]));
     return row;
 }
-
 function getRow(contact) {
     let row = document.createElement("tr");
     row.append(getData(contact.name));
@@ -22,7 +20,6 @@ function getRow(contact) {
     row.append(getData(contact.comment));
     return row;
 }
-
 function getData(data) {
     let cell = document.createElement("td");
     cell.innerHTML = data;

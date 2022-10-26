@@ -15,7 +15,6 @@ public class GetContactController {
     public Map<String, int[]> getIds() {
         Map<String, int[]> map = new HashMap<>();
         map.put("ids", AddFirstContactController.getIds());
-        System.out.println(Arrays.toString(AddFirstContactController.getIds()));
         return map;
     }
 

@@ -42,7 +42,6 @@ function selectIdListener() {
         dataType: "html",
         data: {contactId: getIdSelected()},
         success(data) {
-            // console.log(JSON.parse(data));
             flushData();
             setContactProps(JSON.parse(data));
         }
